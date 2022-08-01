@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
             <span class="icon">
               <i class="input-icon uil uil-user-exclamation"></i>
             </span>
-            <span class="title">정보수정</span>
+            <span class="title">공지사항</span>
           </a>
         </li>
         <li class="list">
@@ -33,15 +33,7 @@ pageEncoding="UTF-8"%>
             <span class="icon">
               <i class="input-icon uil uil-store"></i>
             </span>
-            <span class="title">찜목록</span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="#">
-            <span class="icon">
-              <i class="input-icon uil uil-server"></i>
-            </span>
-            <span class="title">예약확인</span>
+            <span class="title">커뮤니티</span>
           </a>
         </li>
       </ul>

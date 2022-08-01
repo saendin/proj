@@ -16,7 +16,9 @@ public class BoardRepository extends DAO{
 	//글등록
 	public void insertPost(Board bd) {
 		connect();
-		String sql = "insert into boards values((select nvl(max(board_id),2022100)+1 from boards), ?, ?, ?, sysdate,0)";
+		String sql = "insert into boards values((select nvl(max(board_id),2022100)+1 from boards),"
+				+ "(select m.nick_name from members m inner join boards b on m.member_id=b.member_id and b.member_id=?)"
+				+ ", ?, ?, sysdate,0)";
 		
 		try {
 			ps = conn.prepareStatement(sql);

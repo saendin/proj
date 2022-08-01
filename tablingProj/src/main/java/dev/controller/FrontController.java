@@ -35,8 +35,13 @@ public class FrontController extends HttpServlet {
 //		mappings.put("/memberDelete.do", new MemberDeleteController());
 //		mappings.put("/memberJson.do", new MemberJsonController());
 		mappings.put("/boardList.do", new BoardListController());
-		mappings.put("/boardInsert.do", new BoardInsertController());
+		mappings.put("/boardDetail.do", new BoardDetailController());
+		mappings.put("/boardInsertForm.do", new BoardInsertFormController());
+//		mappings.put("/boardUpdate.do", new BoardUpdateController());
+//		mappings.put("/boardDelete.do", new BoardDeleteController());
+//		mappings.put("/boardJson.do", new BoardJsonController());
 	}
+		
 
 	// 호출될 때마다 실행
 	@Override
@@ -54,8 +59,5 @@ public class FrontController extends HttpServlet {
 		
 		Controller controller = mappings.get(path);
 		controller.execute(req, resp);
-		
-
-
 	}
 }

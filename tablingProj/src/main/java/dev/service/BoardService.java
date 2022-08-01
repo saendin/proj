@@ -6,36 +6,39 @@ import dev.domain.Board;
 import dev.repository.BoardRepository;
 
 public class BoardService {
-	 private static BoardService instance = new BoardService();
-	 BoardRepository repo = new BoardRepository();
+	
+	//싱글톤
+	 private static BoardService boardService = new BoardService();
+	 BoardRepository boardRepo = new BoardRepository();
 	 
+	 //생성자
 	 private BoardService() {};
-	 public static BoardService getInstance() {
-		return instance;
+	 public static BoardService getBoardService() {
+		return boardService;
 	 }
 	 
 	 //게시글 등록
-	 public void insertPost(Board bd) {
-		 repo.insertPost(bd);
+	 public void addPost(Board bd) {
+		 boardRepo.insertPost(bd);
 	 }
 	 
 	 //글목록
 	 public List<Board> boardList(){
-		 return repo.boardList();
+		 return boardRepo.boardList();
 	 }
 	 
 	 //게시글 디테일
 	 public Board intoPost(int boardId) {
-		return repo.getPost(boardId);
+		return boardRepo.getPost(boardId);
 	 }
 	 
 	 //게시글 수정
 	 public void updatePost(Board bd) {
-		 repo.updatePost(bd);
+		 boardRepo.updatePost(bd);
 	 }
 	 
 	 //게시글 삭제
 	 public void deletePost(Board bd) {
-		 repo.deletePost(bd);
+		 boardRepo.deletePost(bd);
 	 }
 }

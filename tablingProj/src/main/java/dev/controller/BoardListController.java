@@ -12,10 +12,10 @@ public class BoardListController implements Controller {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 
 		
-		BoardService service = BoardService.getInstance();
-		service.boardList();
+		BoardService boardService = BoardService.getBoardService();
+		boardService.boardList();
 		
-		req.setAttribute("boardList", service.boardList());
+		req.setAttribute("boardList", boardService.boardList());
 		Utils.forward(req, resp, "view/boardList.jsp");
 	}
 

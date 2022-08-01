@@ -1,7 +1,5 @@
 package dev.domain;
 
-import java.sql.Date;
-
 public class Board {
 	private int boardId;
 	private String memberId;

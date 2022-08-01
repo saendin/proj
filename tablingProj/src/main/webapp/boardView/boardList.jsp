@@ -9,13 +9,13 @@
 <title>커뮤니티 글 목록</title>
 <link
   rel="stylesheet"
-  href="${pageContext.request.contextPath}/css/boardList.css"
+  href="${pageContext.request.contextPath}/css/board.css"
 />
 </head>
 <body>
   <table>
 		<thead>
-			<tr>
+			<tr><!--  -->
 				<th>글 번호</th>
 				<th>닉네임</th>
 				<th>제목</th>
@@ -24,14 +24,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="vo" items="${boardList}">
+			<c:forEach var="board" items="${boardList}">
 				<tr><a href = "boardInsert.jsp"><input type="button" value="글쓰기"></a></tr>
 				<tr>
-					<td>${vo.boardId}</td>
-					<td>${vo.memberId}</td>
-					<td><a href = "boardDetail.jsp?id=${vo.boardId}">${vo.title}</a></td>
-					<td>${vo.createDate}</td>
-					<td>${vo.hits}</td>
+					<td>${board.boardId}</td>
+					<td>${board.memberId}</td>
+					<td><a href = "boardDetail.jsp?id=${board.boardId}">${board.title}</a></td>
+					<td>${board.createDate}</td>
+					<td>${board.hits}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

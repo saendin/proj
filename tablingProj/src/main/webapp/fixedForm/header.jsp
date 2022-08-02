@@ -7,11 +7,9 @@ pageEncoding="UTF-8"%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="../css/header.css" />
     <!-- 아이콘 사용 링크 -->
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
     />
   </head>
   <body>

@@ -7,7 +7,7 @@ import dev.Utils;
 import dev.domain.Board;
 import dev.service.BoardService;
 //게시글 등록 컨트롤러
-public class BoardInsertFormController implements Controller {
+public class PostAddController implements Controller {
 	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -19,6 +19,7 @@ public class BoardInsertFormController implements Controller {
 		String cDate = req.getParameter("createDate");
 		int hits = Integer.parseInt(req.getParameter("hits"));
 		
+		System.out.println(brdId + memId + title + cont + cDate + hits);
 
 		Board board = new Board();
 		board.setBoardId(brdId);
@@ -34,7 +35,7 @@ public class BoardInsertFormController implements Controller {
 		req.setAttribute("boardList", board);
 		
 		//글 등록 후 디테일로 돌아가도록
-		Utils.forward(req, resp, "boardView/boardDetail.jsp");
+		Utils.forward(req, resp, "boardView/postDetail.jsp");
 	}
 
 }

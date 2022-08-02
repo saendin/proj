@@ -34,11 +34,12 @@ public class FrontController extends HttpServlet {
 //		mappings.put("/memberUpdate.do", new MemberUpdateController());
 //		mappings.put("/memberDelete.do", new MemberDeleteController());
 //		mappings.put("/memberJson.do", new MemberJsonController());
-		mappings.put("/boardList.do", new BoardListController());
-		mappings.put("/boardDetail.do", new BoardDetailController());
-		mappings.put("/boardInsertForm.do", new BoardInsertFormController());
-//		mappings.put("/boardUpdate.do", new BoardUpdateController());
-//		mappings.put("/boardDelete.do", new BoardDeleteController());
+		mappings.put("/postList.do", new PostListController());
+		mappings.put("/postDetail.do", new PostDetailController());
+		mappings.put("/addPost.do", new PostAddController());
+		mappings.put("/boardListPaging.do", new PostListPagingController());
+		mappings.put("/updatePost.do", new PostUpdateController());
+		mappings.put("/deletePost.do", new PostDeleteController());
 //		mappings.put("/boardJson.do", new BoardJsonController());
 	}
 		

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.domain.Board;
+import dev.domain.Criteria;
 import dev.domain.Member;
 
 public class BoardRepository extends DAO{
@@ -53,7 +54,7 @@ public class BoardRepository extends DAO{
 				Board board = new Board(rs.getInt("board_id"),
 									 rs.getString("member_id"),
 									 rs.getString("title"),
-									 rs.getString("contetn"),
+									 rs.getString("content"),
 									 rs.getString("create_date"),
 									 rs.getInt("hits"));
 				list.add(board);
@@ -65,10 +66,10 @@ public class BoardRepository extends DAO{
 		}
 		return list;
 	}
-	//게시글 디테일
+	//게시글 디테일(단건조회)
 	public Board getPost(int boardId) {
 		connect();
-		String sql = "select from boards where board_id=?";
+		String sql = "select * from boards where board_id=?";
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -177,6 +178,39 @@ public class BoardRepository extends DAO{
 			disconnect();
 		}
 		return null;
+	}
+	//페이징
+	public List<Board> getListPaging(Criteria criteria) {
+		connect();
+		List<Board> pageList = new ArrayList<>();
+		String sql = "select board_id, member_id, title, create_date, hits "
+				+ "from (select rownum rn, board_id, member_id, title,create_date, hits "
+				+ "      from (select rownum rn, board_id, member_id, title,create_date, hits "
+				+ "            from boards order by board_id desc) "
+				+ "      where rownum <= ?) "
+				+ "where rn>?"; 
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, criteria.getPostNum()*criteria.getPageNum());//글갯수
+			ps.setInt(2, criteria.getPostNum()*(criteria.getPageNum()-1));//페이지
+			
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				Board board = new Board();
+				board.setBoardId(rs.getInt("board_id"));
+				board.setMemberId(rs.getString("member_id"));
+				board.setTitle(rs.getString("title"));
+				board.setCreateDate(rs.getString("create_date"));
+				board.setHits(rs.getInt("hits"));
+				
+				pageList.add(board);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return pageList;
 	}
 }
 	

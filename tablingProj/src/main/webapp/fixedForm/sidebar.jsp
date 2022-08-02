@@ -29,7 +29,7 @@ pageEncoding="UTF-8"%>
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="/boardListPaging.do?pageNum=1&postNum=10">
             <span class="icon">
               <i class="input-icon uil uil-store"></i>
             </span>

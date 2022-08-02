@@ -1,6 +1,7 @@
 package dev.domain;
 
 public class Board {
+	//-------------Board
 	private int boardId;
 	private String memberId;
 	private String title;
@@ -8,6 +9,7 @@ public class Board {
 	private String createDate;
 	private int hits;
 	
+	//--------생성자
 	public Board(){};
 	
 	public Board(int boardId, String memberId, String title, String content, String createDate, int hits) {
@@ -19,6 +21,7 @@ public class Board {
 		this.createDate = createDate;
 		this.hits = hits;
 	}
+	
 	public String getMemberId() {
 		return memberId;
 	}

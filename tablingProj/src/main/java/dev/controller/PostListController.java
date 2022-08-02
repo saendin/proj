@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import dev.Utils;
 import dev.service.BoardService;
 
-public class BoardListController implements Controller {
+public class PostListController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -16,7 +16,7 @@ public class BoardListController implements Controller {
 		boardService.boardList();
 		
 		req.setAttribute("boardList", boardService.boardList());
-		Utils.forward(req, resp, "view/boardList.jsp");
+		Utils.forward(req, resp, "boardView/postList.jsp");
 	}
 
 }

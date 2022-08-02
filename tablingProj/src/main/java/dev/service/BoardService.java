@@ -3,6 +3,7 @@ package dev.service;
 import java.util.List;
 
 import dev.domain.Board;
+import dev.domain.Criteria;
 import dev.repository.BoardRepository;
 
 public class BoardService {
@@ -41,4 +42,10 @@ public class BoardService {
 	 public void deletePost(Board bd) {
 		 boardRepo.deletePost(bd);
 	 }
+	 
+	 //페이징
+	 public List<Board> getPaging(Criteria criteria) {
+		 return boardRepo.getListPaging(criteria);
+	 }
+	
 }

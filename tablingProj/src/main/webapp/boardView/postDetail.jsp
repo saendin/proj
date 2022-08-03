@@ -9,27 +9,27 @@
 <title>게시글 보기</title>
 <link href="${pageContext.request.contextPath}/css/board.css" rel="stylesheet"/>
 <jsp:include page="../fixedForm/header.jsp"></jsp:include>
-<jsp:include page="../fixedForm/sidebar.jsp"></jsp:include>
+
 </head>
 <body>
 	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 		<thead>
-			<tr>
-				<th>${board.boardId}</th>
-				<th>${board.memberId}</th>
-				<th>${board.title}</th>
-				<th>${board.createDate}</th>
-				<th>${board.hits}</th>
+			<tr style="border-bottom:1px solid #dddddd;">
+				<th>${boardDetail.boardId}</th>
+				<th>${boardDetail.memberId}</th>
+				<th>${boardDetail.title}</th>
+				<th>${boardDetail.createDate}</th>
+				<th>${boardDetail.hits}</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody style="text-align: left;">
 				<tr>
-				<td colspan="5">${board.content}</td>
+				<td colspan="5" width="600px" height="350px">${boardDetail.content}</td>
 				</tr>
 		</tbody>
 		</table>
-		<a href="postList.do"><input type="submit" value="목록으로"></a>
-		<a href = "deletePost.do?brdNo=${board.boardId}"><input type="submit" value="삭제"></a>
-		<a href = "updatePost.do?brdNo=${board.boardId}"><input type="submit" value="수정"></a>
+		<a href=  "postListPaging.do?pageNum=1&postNum=10"><button>목록으로</button></a>
+		<a href = "deletePost.do?brdNo=${board.boardId}"><button>삭제</button></a>
+		<a href = "updatePost.jsp?brdNo=${board.boardId}"><button>수정</button></a>
 </body>
 </html>

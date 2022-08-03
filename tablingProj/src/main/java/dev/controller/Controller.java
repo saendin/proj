@@ -10,5 +10,6 @@ public interface Controller {
 
 	MemberService memberService = MemberService.getMemberService();
 	
+	
 	void execute(HttpServletRequest req, HttpServletResponse resp);
 }

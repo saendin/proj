@@ -9,16 +9,16 @@ public class Page {
 		//--전체건수 위한 필드
 		private int total;
 		private Criteria cri;
+		private int lastPage;
 		
 		
 	//--------생성자
 		public Page(Criteria cri, int total) {
-			super();
-			this.startPage = this.endPage-9;
 			this.endPage = (int) (Math.ceil(cri.getPageNum()/10.0))*10;
+			this.startPage = this.endPage-9;
 			this.total = total;
 			this.cri = cri;
-			int lastPage = (int) (Math.ceil(total*1.0/cri.getPostNum())); //마지막페이지
+			this.lastPage = (int) (Math.ceil(total*1.0/cri.getPostNum())); //마지막페이지
 		
 			if(this.endPage > lastPage)
 				this.endPage = lastPage;
@@ -66,5 +66,23 @@ public class Page {
 
 		public void setTotal(int total) {
 			this.total = total;
+		}
+		public Criteria getCri() {
+			return cri;
+		}
+
+
+		public void setCri(Criteria cri) {
+			this.cri = cri;
+		}
+
+
+		public int getLastPage() {
+			return lastPage;
+		}
+
+
+		public void setLastPage(int lastPage) {
+			this.lastPage = lastPage;
 		}
 }

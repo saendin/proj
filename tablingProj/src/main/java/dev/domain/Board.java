@@ -8,19 +8,30 @@ public class Board {
 	private String content;
 	private String createDate;
 	private int hits;
-	
-	//--------생성자
-	public Board(){};
-	
-	public Board(int boardId, String memberId, String title, String content, String createDate, int hits) {
-		super();
-		this.boardId = boardId;
-		this.memberId = memberId;
-		this.title = title;
-		this.content = content;
-		this.createDate = createDate;
-		this.hits = hits;
-	}
+	// -- 조인문 활용
+	private String nickName;
+   
+   //--------생성자
+   public Board(){};
+   
+   public Board(int boardId, String memberId, String nickName, String title, String content, String createDate, int hits) {
+      super();
+      this.boardId = boardId;
+      this.memberId = memberId;
+      this.nickName = nickName;
+      this.title = title;
+      this.content = content;
+      this.createDate = createDate;
+      this.hits = hits;
+   }
+   
+   public String getNickName() {
+      return nickName;
+   }
+
+   public void setNickName(String nickName) {
+      this.nickName = nickName;
+   }
 	
 	public String getMemberId() {
 		return memberId;
@@ -58,6 +69,13 @@ public class Board {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
+
+	@Override
+	public String toString() {
+		return "Board [boardId=" + boardId + ", memberId=" + memberId + ", title=" + title + ", content=" + content
+				+ ", createDate=" + createDate + ", hits=" + hits + ", nickName=" + nickName + "]";
+	}
+	
 	
 	
 }

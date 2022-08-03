@@ -12,27 +12,27 @@ public class PostAddController implements Controller {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
-		int brdId = Integer.parseInt(req.getParameter("boardId"));
-		String memId = req.getParameter("memberId");
+		// 로그인 아이디 세션에서 가져오기
+		String loginId = (String) req.getSession().getAttribute("loginId");
+		loginId = "user1";
 		String title = req.getParameter("title");
 		String cont = req.getParameter("content");
-		String cDate = req.getParameter("createDate");
-		int hits = Integer.parseInt(req.getParameter("hits"));
-		
-		System.out.println(brdId + memId + title + cont + cDate + hits);
+
+		System.out.println(title);
+		System.out.println(cont);
 
 		Board board = new Board();
-		board.setBoardId(brdId);
-		board.setMemberId(memId);
+		board.setMemberId(loginId);
 		board.setTitle(title);
-		board.setContent(cont);
-		board.setCreateDate(cDate);
-		board.setHits(hits);
+		board.setContent(cont);		
+		
 		
 		BoardService boardService = BoardService.getBoardService();
 		boardService.addPost(board);
 		
-		req.setAttribute("boardList", board);
+		req.setAttribute("boardDetail", board);
+		
+		
 		
 		//글 등록 후 디테일로 돌아가도록
 		Utils.forward(req, resp, "boardView/postDetail.jsp");

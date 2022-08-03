@@ -18,7 +18,7 @@ public class PostDetailController implements Controller {
 		BoardRepository bdRepo = new BoardRepository();
 		Board board = bdRepo.getPost(bdId);
 
-		req.setAttribute("board", board);
+		req.setAttribute("boardDetail", board);
 		Utils.forward(req, resp, "boardView/postDetail.jsp");
 
 		/*

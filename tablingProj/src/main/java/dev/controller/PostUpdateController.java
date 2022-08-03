@@ -10,21 +10,20 @@ public class PostUpdateController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		
+		// 로그인 아이디 세션에서 가져오기
+		String loginId = (String) req.getSession().getAttribute("loginId");
+		loginId = "user1";
 		//값 받아올 속성
 		String boardId = req.getParameter("boardId");
-		String memId = req.getParameter("memberId");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		String cDate = req.getParameter("createDate");
-		String hits = req.getParameter("hits");
 		
 		Board board = new Board();
 		board.setBoardId(Integer.parseInt(boardId));
-		board.setMemberId(memId);
+		board.setMemberId(loginId);
 		board.setTitle(title);
 		board.setContent(content);
-		board.setCreateDate(cDate);
-		board.setHits(Integer.parseInt(hits));
 		
 		//실행할 서비스
 		BoardService bdService = BoardService.getBoardService();

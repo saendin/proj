@@ -17,12 +17,11 @@ public class BoardRepository extends DAO{
 	//글등록
 	public void insertPost(Board bd) {
 		connect();
-		String sql = "insert into boards values((select nvl(max(board_id),2022100)+1 from boards),"
-				+ "(select m.nick_name from members m inner join boards b on m.member_id=b.member_id and b.member_id=?)"
-				+ ", ?, ?, sysdate,0)";
+		String sql = "insert into boards values((select nvl(max(board_id),2022100)+1 from boards), ?, ?, ?, sysdate,0)";
 		
 		try {
 			ps = conn.prepareStatement(sql);
+			
 			ps.setString(1, bd.getMemberId());// 아이디를 받아와서 그 아이디랑 멤버아이디랑 같은 아이디면 별명이 보여지도록
 			ps.setString(2, bd.getTitle());
 			ps.setString(3, bd.getContent());
@@ -43,7 +42,7 @@ public class BoardRepository extends DAO{
 	//게시판 전체 목록
 	public List<Board> boardList() {
 		connect();
-		String sql = "select * from boards";
+		String sql = "select b.board_id, b.member_id ,m.nick_name, b.title, b.content, b.create_date, b.hits from boards b join members m on (b.member_id = m.member_id) order by b.board_id desc";
 		List<Board> list = new ArrayList<>();
 		
 		try {
@@ -53,6 +52,7 @@ public class BoardRepository extends DAO{
 			while (rs.next()) {
 				Board board = new Board(rs.getInt("board_id"),
 									 rs.getString("member_id"),
+									 rs.getString("nick_name"),
 									 rs.getString("title"),
 									 rs.getString("content"),
 									 rs.getString("create_date"),

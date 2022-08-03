@@ -37,9 +37,9 @@ public class FrontController extends HttpServlet {
 		mappings.put("/postList.do", new PostListController());
 		mappings.put("/postDetail.do", new PostDetailController());
 		mappings.put("/addPost.do", new PostAddController());
-		mappings.put("/boardListPaging.do", new PostListPagingController());
+		mappings.put("/postListPaging.do", new PostListPagingController());
 		mappings.put("/updatePost.do", new PostUpdateController());
-		mappings.put("/deletePost.do", new PostDeleteController());
+//		mappings.put("/deletePost.do", new PostDeleteController());
 //		mappings.put("/boardJson.do", new BoardJsonController());
 	}
 		

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import dev.Utils;
 import dev.domain.Board;
 import dev.domain.Criteria;
+import dev.domain.Member;
 import dev.domain.Page;
 import dev.service.BoardService;
 
@@ -24,9 +25,20 @@ public class PostListPagingController implements Controller {
 		criteria.setPageNum(Integer.parseInt(pageNum));
 		criteria.setPostNum(Integer.parseInt(postNum));
 		
+//		criteria.setPageNum(1);
+//		criteria.setPostNum(10);
+
 		//---------PageList서비스 호출
 		BoardService bdService = BoardService.getBoardService();
 		List<Board> pageList = bdService.getPaging(criteria);
+		for (Board board : pageList) {
+			String memberId = board.getMemberId();
+			Member member = memberService.findOneMember(memberId);
+			board.setNickName(member.getNickName());
+		}
+
+		pageList.forEach(System.out::println);
+		
 		req.setAttribute("boardList", pageList);
 		
 		//---------글 목록 전체

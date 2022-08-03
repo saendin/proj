@@ -108,8 +108,8 @@ public class MemberRepository extends DAO{
 				member = new Member();
 				member.setMemberId(rs.getString(1));
 				member.setPassword(rs.getString(2));
-				member.setPhoneNum(rs.getString(3));
-				member.setNickName(rs.getString(4));
+				member.setPhoneNum(rs.getString(4));
+				member.setNickName(rs.getString(3));
 				member.setRole(rs.getInt(5));
 			}
 		} catch (SQLException e) {
@@ -134,8 +134,8 @@ public class MemberRepository extends DAO{
 				Member member = new Member();
 				member.setMemberId(rs.getString(1));
 				member.setPassword(rs.getString(2));
-				member.setPhoneNum(rs.getString(3));
-				member.setNickName(rs.getString(4));
+				member.setPhoneNum(rs.getString(4));
+				member.setNickName(rs.getString(3));
 				member.setRole(rs.getInt(5));
 
 				list.add(member);

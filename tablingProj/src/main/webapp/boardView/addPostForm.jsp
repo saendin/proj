@@ -11,7 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<!-- 로그인 값 확인 -->
+	<!-- 로그인 값 확인 -->
  	<%-- <c:set var="user" value="${param.loginId}"></c:set>
 	<c:if test="${empty user}">
 		<c:redirect url="../memberView/memberLoginForm.jsp"></c:redirect>
@@ -41,7 +41,7 @@
 					</tbody>
 				</table>
 			<button id="btn_register" type="submit" class="btn btn_registert">등록</button>
-			<button id="btn_previous" type="button" class="btn btn_previous" onclick="location.href='postListPaging.do?pageNum=1&postNum=10'">취소</button>
+			<button id="btn_previous" type="button" class="btn btn_previous" onclick="location.href='../postListPaging.do?pageNum=1&postNum=10'">취소</button>
 		</form>
 		<!-- 글쓰기 영역 끝 -->
 		<!-- 글쓰기 버튼 -->
